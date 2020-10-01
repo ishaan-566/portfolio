@@ -9,7 +9,6 @@ def project_index(request):
     }
     return render(request, template_name='portfolio/project_index.html', context=context)
 
-
 def project_detail(request, pk):
     project = Project.objects.get(pk=pk)
     comments = Comment.objects.filter(project=project).order_by('-created_on')
@@ -24,6 +23,7 @@ def project_detail(request, pk):
             )
             comment.save()
 
+            
     context = {
         'project': project,
         'comments': comments,
