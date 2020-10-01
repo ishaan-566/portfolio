@@ -1,0 +1,30 @@
+{% extends "portfolio/base.html" %}
+{% load static %}
+{% block title %}Project-{{tech|title}}{% endblock %}
+{% block body %}
+<section id="testimonials" class="testimonials-section bg-gray">
+    <div class="container">
+        <br><br>
+        <header class="text-center mb-2">
+          <h2 data-animate="fadeInUp" class="title">{{ tech | title }}</h2>
+        </header>
+        <div class="row">
+        {% for project in project %}
+            <div class="col-md-4">
+                <div class="card mb-2">
+                    <img class="card-img-top" src="{{ project.image.url }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ project.title|title }}</h5>
+                        <p class="card-text">{{ project.description|slice:":100" }}</p>
+                        <a href="{% url 'project_detail' project.pk %}"
+                           class="btn btn-primary">
+                            Read More
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}
