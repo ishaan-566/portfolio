@@ -32,7 +32,6 @@ class Comment(models.Model):
     
 class Language(models.Model):
     name = models.CharField(max_length=20)
-    percentage = models.IntegerField()
     
     def __str__(self):
         return str(self.name)
