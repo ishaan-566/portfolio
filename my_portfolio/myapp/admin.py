@@ -13,3 +13,4 @@ class ModelCategory(admin.ModelAdmin):
 admin.site.register(Project, ModelProject)
 admin.site.register(Category, ModelCategory)
 admin.site.register(Language)
+admin.site.register(Certificate)

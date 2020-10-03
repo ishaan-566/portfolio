@@ -1,0 +1,178 @@
+{% extends "portfolio/base.html" %}
+{% load static %}
+{% block title %}Certificate{% endblock %}
+{% block styles %}
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    .header {
+        text-align: center;
+        padding: 32px;
+    }
+
+    .rows {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        padding: 0 4px;
+    }
+
+    .column {
+        -ms-flex: 25%;
+        flex: 25%;
+        max-width: 25%;
+        padding: 0 4px;
+    }
+
+    .column img {
+        margin-top: 8px;
+        vertical-align: middle;
+        width: 100%;
+    }
+
+    @media screen and (max-width: 800px) {
+        .column {
+            -ms-flex: 50%;
+            flex: 50%;
+            max-width: 50%;
+        }
+    }
+
+    @media screen and (max-width: 600px) {
+        .column {
+            -ms-flex: 100%;
+            flex: 100%;
+            max-width: 100%;
+        }
+    }
+</style>
+<style>
+    #myImg {
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    #myImg:hover {
+        opacity: 0.7;
+    }
+
+    /* The Modal (background) */
+    .modal {
+        padding-top: 50px;
+        background-color: rgb(0, 0, 0);
+        background-color: rgba(0, 0, 0, 0.9);
+    }
+
+    .modal-content {
+        margin: auto;
+        display: block !important;
+        width: auto !important;
+        height: 90% !important;
+    }
+
+    /* Caption of Modal Image (Image Text) - Same Width as the Image */
+    #caption {
+        margin: auto;
+        display: block;
+        width: 80%;
+        max-width: 700px;
+        text-align: center;
+        color: #ccc;
+        padding: 10px 0;
+        height: 150px;
+    }
+
+    /* Add Animation - Zoom in the Modal */
+    .modal-content,
+    #caption {
+        animation-name: zoom;
+        animation-duration: 0.6s;
+    }
+
+    @keyframes zoom {
+        from {
+            transform: scale(0)
+        }
+
+        to {
+            transform: scale(1)
+        }
+    }
+
+    /* The Close Button */
+    .close {
+        position: absolute;
+        top: 15px;
+        right: 35px;
+        color: #f1f1f1 !important;
+        font-size: 40px !important;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: #bbb !important;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    /* 100% Image Width on Smaller Screens */
+    @media only screen and (max-width: 700px) {
+        .modal-content {
+            width: 100%;
+        }
+    }
+</style>
+{% endblock styles %}
+{% block body %}
+<section id="intro">
+    <div class="container">
+        <br><br>
+        <header class="text-center mb-2">
+            <h2 data-animate="fadeInUp" class="title">CERTIFICATES</h2>
+        </header>
+        <div class="rows">
+            {% for cl in certificates %}
+            <div class="column">
+                {% for c in cl %}
+                <img id="myImg" {% if c %} src="{{ c.image.url }}" alt="{{ c.title|upper }}"
+                    onclick="modalFunction('{{ c.image.url }}', '{{ c.title|upper }}')" {% else %}
+                    src="/media/project/certificates/yousawnothing.jpg" alt="{{ c.title }}" {% endif %}
+                    style="width:100%">
+                {% endfor %}
+            </div>
+            {% endfor %}
+        </div>
+        <div id="myModal" class="modal">
+            <span class="close" onclick="close()">&times;</span>
+            <img class="modal-content" id="img01">
+            <div id="caption"></div>
+        </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    var modal = document.getElementById("myModal");
+    function modalFunction(image, caption) {
+        
+        var modalImg = document.getElementById("img01");
+        var captionText = document.getElementById("caption");
+        modal.style.display = "block";
+        modalImg.src = image;
+        captionText.innerHTML = caption;
+    }
+    var span = document.getElementsByClassName("close")[0];
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+    modal.onclick = function () {
+        modal.style.display = "none";
+    }
+</script>
+{% endblock scripts %}

@@ -1,42 +1,48 @@
 {% extends 'portfolio/base.html' %}
-  {% block title %}Ishaan Aggarwal|Responsive Portfolio{% endblock %}
-  {% block body %}
-    <section id="intro" style="background: url(/media/project/img/home.jpg) center center no-repeat;
+{% block title %}Ishaan Aggarwal|Responsive Portfolio{% endblock %}
+{% block styles %}
+<style>
+  .item {
+    text-align: left;
+  }
+</style>
+{% endblock styles %}
+{% block body %}
+<section id="intro" style="background: url(/media/project/img/home.jpg) center center no-repeat;
       background-size: cover;" class="intro-section pb-2">
-      <div class="container text-center">
-        <div data-animate="fadeInDown" class="logo"><img src="/media/project/img/logo-big.png" alt="logo" width="130"></div>
-        <h1 data-animate="fadeInDown" class="text-shadow mb-5">Hello, hola, नमस्ते !</h1>
-        <p data-animate="slideInUp" class="h3 text-shadow text-400">Talk is cheap. Show me the code.</p>
-        <a href="{% url 'blog_index' %}" target="_blank" class="btn btn-outline-light link-scroll">Blog</a>
-        <a href="{% url 'project_index' %}" target="_blank" class="btn btn-outline-light link-scroll">Projects</a>
+  <div class="container text-center">
+    <div data-animate="fadeInDown" class="logo"><img src="/media/project/img/logo-big.png" alt="logo" width="130"></div>
+    <h1 data-animate="fadeInDown" class="text-shadow mb-5">Hello, hola, नमस्ते !</h1>
+    <p data-animate="slideInUp" class="h3 text-shadow text-400">Talk is cheap. Show me the code.</p>
+  </div>
+</section>
+<section id="about" class="about-section">
+  <div class="container">
+    <header class="text-center">
+      <h2 data-animate="fadeInDown" class="title">About me</h2>
+    </header>
+    <div class="row">
+      <br>
+      <div data-animate="fadeInUp" class="col-lg-6">
+        <p>
+          I am a hard working, honest individual. I am a good timekeeper, always willing to learn new skills. I am
+          friendly, helpful and polite, have a good sense of humour. I am able to work independently in busy
+          environments and also within a team setting. I am outgoing and tactful, and able to listen effectively
+          when solving problems.
+        </p>
+        <p>
+          My job involves doing what I love, Developing new websites/application.I spend a lot of time learning new
+          techniques and actively help other people learn through a variety of help groups.
+        </p>
+        <p>
+          I, Ishaan, started programming when I was in High School.I never stopped since.You can understand why
+          computing matters to me. It is ingrained in who I am.
+        </p>
       </div>
-    </section>
-    <section id="about" class="about-section">
-      <div class="container">
-        <header class="text-center">
-          <h2 data-animate="fadeInDown" class="title">About me</h2>
-        </header>
-        <div class="row">
-          <br>
-          <div data-animate="fadeInUp" class="col-lg-6">
-            <p>
-              I am a hard working, honest individual. I am a good timekeeper, always willing to learn new skills. I am
-              friendly, helpful and polite, have a good sense of humour. I am able to work independently in busy
-              environments and also within a team setting. I am outgoing and tactful, and able to listen effectively
-              when solving problems.
-            </p>
-            <p>
-              My job involves doing what I love, Developing new websites/application.I spend a lot of time learning new
-              techniques and actively help other people learn through a variety of help groups.
-            </p>
-            <p>
-              I, Ishaan, started programming when I was in High School.I never stopped since.You can understand why
-              computing matters to me. It is ingrained in who I am.
-            </p>
-          </div>
-          <div data-animate="fadeInUp" class="col-lg-6">
-            <div data-animate="fadeInUp" class="col-sm-6 mx-auto mt-5"><img src="/media/project/img/about.jpg" alt="This is me - Ishaan" class="image rounded-circle img-fluid"></div>
-            <!-- {% for language in languages %}
+      <div data-animate="fadeInUp" class="col-lg-6">
+        <div data-animate="fadeInUp" class="col-sm-6 mx-auto mt-5"><img src="/media/project/img/about.jpg"
+            alt="This is me - Ishaan" class="image rounded-circle img-fluid"></div>
+        <!-- {% for language in languages %}
               <div class="skill-item">
                 <div class="progress-title">{{ language.name }}</div>
                 <div class="progress">
@@ -46,170 +52,159 @@
                 </div>
               </div>
             {% endfor %} -->
-          </div>
-          <!-- <div data-animate="fadeInUp" class="col-sm-6 mx-auto mt-5"><img src="/media/project/img/about.jpg" alt="This is me - Ishaan" class="image rounded-circle img-fluid"></div> -->
-        </div>
       </div>
-    </section>
-    <section id="services" class="bg-gradient services-section">
-      <div class="container">
-        <header class="text-center">
-          <h2 data-animate="fadeInDown" class="title">Skills</h2>
-        </header>
-        <div class="row services text-center">
-          <div data-animate="fadeInUp" class="col-lg-3">
-            <div class="icon"><i class="fa fa-database" aria-hidden="true"></i></div>
-            <h3 class="heading mb-3 text-400">Database</h3>
-            <p>
-              <ul>
-                  <li class="text-left">MySql</li>
-                    <li class="text-left">Oracle</li>
-                    <li class="text-left">Sqlite3</li>
-                </ul>
-            </p>
-          </div>
-          <div data-animate="fadeInUp" class="col-lg-3">
-            <div class="icon"><i class="fa fa-desktop"></i></div>
-            <h3 class="heading mb-3 text-400">Operating System</h3>
-            <p>
-              <ul class="text-left">
-            <li>Windows XP</li>
-            <li>Windows 7</li>
-            <li>Windows 10</li>
-          </ul>
-            </p>
-          </div>
-          <div data-animate="fadeInUp" class="col-lg-3">
-            <div class="icon"><i class="fa fa-globe"></i></div>
-            <h3 class="heading mb-3 text-400">Web Technologies</h3>
-            <ul class="text-left">
-              <li>HTML</li>
-              <li>CSS</li>
-              <li>JS</li>
-              <li>Bootstrap 3/4</li>
-              <li>p5.js</li>
-            </ul>
-          </div>
-          <div data-animate="fadeInUp" class="col-lg-3">
-            <div class="icon"><i class="fa fa-globe"></i></div>
-            <h3 class="heading mb-3 text-400">Web Technologies</h3>
-            <ul class="text-left">
-              {% for language in languages %}
-              <li>{{ language.name }}</li>
-              {% endfor %}
-            </ul>
-          </div>
-        </div>
-        <hr data-animate="fadeInUp">
-        <div data-animate="fadeInUp" class="text-center">
-          <p class="lead">Would you like to know more?</p>
-          <p><a href="{% url 'blog_index' %}" target="_blank" class="btn btn-outline-light link-scroll">Blog</a>
-            <a href="{% url 'project_index' %}" target="_blank" class="btn btn-outline-light link-scroll">Projects</a></p>
-        </div>
+      <!-- <div data-animate="fadeInUp" class="col-sm-6 mx-auto mt-5"><img src="/media/project/img/about.jpg" alt="This is me - Ishaan" class="image rounded-circle img-fluid"></div> -->
+    </div>
+  </div>
+</section>
+<section id="services" class="bg-gradient services-section">
+  <div class="container">
+    <header class="text-center">
+      <h2 data-animate="fadeInDown" class="title">Skills</h2>
+    </header>
+    <div class="row services text-center">
+      <div data-animate="fadeInUp" class="col-lg-3">
+        <div class="icon"><i class="fa fa-database" aria-hidden="true"></i></div>
+        <h3 class="heading mb-3 text-400">Database</h3>
+        <p>
+        <ul>
+          <li class="text-left">MySql</li>
+          <li class="text-left">Oracle</li>
+          <li class="text-left">Sqlite3</li>
+        </ul>
+        </p>
       </div>
-    </section>
-    <section id="testimonials" class="testimonials-section bg-gray">
-      <div class="container">
-        <header class="text-center mb-2">
-          <h2 data-animate="fadeInUp" class="title">EDUCATION</h2>
-        </header>
-        <ul data-animate="fadeInUp" class="owl-carousel owl-theme testimonials equalize-height">
-          <li class="item">
-            <div class="testimonial full-height">
-              <div class="text">
-                <h5><b>B. Tech</b></h5>
-                <h6><i class="fa fa-calendar"></i>&nbspPursuing</h6>
-                <p>Computer Science and Engineering</p>
-                <i class="fa fa-university" aria-hidden="true"></i> Dr. APJ ABDUL KALAM TECHNICAL UNIVERSITY<br>
-                <b>College: </b>R.D. Engineering College Duhai, Ghaziabad, Uttar Pradesh, India<br>
-                <b>Marks: 82%</b>
-              </div>
-            </div>
-          </li>
-          <li class="item">
-            <div class="testimonial full-height">
-              <div class="text">
-                <h5><b>12th</b></h5>
-                <h6><i class="fa fa-calendar"></i>&nbsp;2016</h6>
-                <br>
-                <p>PCM + CS + English</p>
-                <i class="fa fa-university" aria-hidden="true"></i>C.B.S.E<br>
-                <b>School: </b>Dayawati Modi Public School, Modinagar, Ghaziabad, Uttar Pradesh, India<br>
-                <b>Marks: 75.6%</b>
-              </div>
-            </div>
-          </li>
-          <li class="item">
-            <div class="testimonial full-height">
-              <div class="text">
-                <h5><b>10th</b></h5>
-                <h6><i class="fa fa-calendar"></i>&nbsp;2014</h6>
-                <p>General Curriculum</p>
-                <br>
-                <i class="fa fa-university" aria-hidden="true"></i>C.B.S.E<br>
-                <b>School: </b>Chhaya Public School, Modinagar, Ghaziabad, Uttar Pradesh, India<br>
-                <b>Marks: 8.6 CGPA</b>
-              </div>
-            </div>
-          </li>
+      <div data-animate="fadeInUp" class="col-lg-3">
+        <div class="icon"><i class="fa fa-desktop"></i></div>
+        <h3 class="heading mb-3 text-400">Operating System</h3>
+        <p>
+        <ul class="text-left">
+          <li>Windows XP</li>
+          <li>Windows 7</li>
+          <li>Windows 10</li>
+        </ul>
+        </p>
+      </div>
+      <div data-animate="fadeInUp" class="col-lg-3">
+        <div class="icon"><i class="fa fa-globe"></i></div>
+        <h3 class="heading mb-3 text-400">Web Technologies</h3>
+        <ul class="text-left">
+          <li>HTML</li>
+          <li>CSS</li>
+          <li>JS</li>
+          <li>Bootstrap 3/4</li>
+          <li>p5.js</li>
         </ul>
       </div>
-    </section>
-    <center><h2 data-animate="fadeInDown" class="title">Other Skills</h2></center>
-    <section id="customers" data-dir="up" style="background: url(&quot;media/project/img/parallax.jpg&quot;);" class="statistics-section text-white parallax parallax">
-      <div class="container">
-        <div class="col-md-12">
-          <div class="row align-items-center">
-            <div class="col-lg-2 col-md-4 col-sm-6">
-              <div class="customer" data-animate="fadeInUp"><img src="/media/project/img/customers/django.png" title="Django" data-placement="bottom" data-toggle="tooltip" class="img-fluid d-block mx-auto"></div>
-            </div>
-            <div class="col-lg-2 col-md-4 col-sm-6">
-              <div class="customer" data-animate="fadeInUp"><img src="/media/project/img/customers/opencv.png" title="OpenCV" data-placement="bottom" data-toggle="tooltip" class="img-fluid d-block mx-auto"></div>
-            </div>
-            <div class="col-lg-2 col-md-4 col-sm-6">
-              <div class="customer" data-animate="fadeInUp"><img src="/media/project/img/customers/word.png" title="MS Word" data-placement="bottom" data-toggle="tooltip" class="img-fluid d-block mx-auto"></div>
-            </div>
-            <div class="col-lg-2 col-md-4 col-sm-6">
-              <div class="customer" data-animate="fadeInUp"><img src="/media/project/img/customers/powerpoint.png" title="MS Powerpoint" data-placement="bottom" data-toggle="tooltip" class="img-fluid d-block mx-auto"></div>
-            </div>
-            <div class="col-lg-2 col-md-4 col-sm-6">
-              <div class="customer" data-animate="fadeInUp"><img src="/media/project/img/customers/selenium.png" title="Selenium" data-placement="bottom" data-toggle="tooltip" class="img-fluid d-block mx-auto"></div>
-            </div>
-            <div class="col-lg-2 col-md-4 col-sm-6">
-              <div class="customer" data-animate="fadeInUp"><img src="/media/project/img/customers/presentation.png" title="Presentation" data-placement="bottom" data-toggle="tooltip" class="img-fluid d-block mx-auto"></div>
-            </div>
-            <div class="col-lg-2 col-md-4 col-sm-6">
-              <div class="customer" data-animate="fadeInUp"><img src="/media/project/img/customers/teaching.png" title="Teaching" data-placement="bottom" data-toggle="tooltip" class="img-fluid d-block mx-auto"></div>
-            </div>
+      <div data-animate="fadeInUp" class="col-lg-3">
+        <div class="icon"><i class="fa fa-globe"></i></div>
+        <h3 class="heading mb-3 text-400">Web Technologies</h3>
+        <ul class="text-left">
+          {% for language in languages %}
+          <li>{{ language.name }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      
+      
+    </div>
+    <br>
+    <hr data-animate="fadeInUp">
+    <div data-animate="fadeInUp" class="text-center">
+      <p class="lead">Click here To View CERTTIFICATES</p>
+      <p><a href="{% url 'certificate' %}" target="_blank" class="btn btn-outline-light link-scroll">Certificate</a></p>
+    </div>
+  </div>
+</section>
+<section id="testimonials" class="testimonials-section bg-gray">
+  <div class="container">
+    <header class="text-center mb-2">
+      <h2 data-animate="fadeInUp" class="title">EDUCATION</h2>
+    </header>
+    <ul data-animate="fadeInUp" class="owl-carousel owl-theme testimonials equalize-height"
+      style="text-align: -webkit-center;">
+      <li class="item">
+        <div class="testimonial full-height">
+          <div class="text">
+            <h5><b>B. Tech</b></h5>
+            <h6><i class="fa fa-calendar"></i>&nbsp2016-2020</h6>
+            <p>Computer Science and Engineering</p>
+            <i class="fa fa-university" aria-hidden="true"></i> Dr. APJ ABDUL KALAM TECHNICAL UNIVERSITY<br>
+            <b>College: </b>R.D. Engineering College Duhai, Ghaziabad, Uttar Pradesh, India<br>
+            <b>Marks: 82%</b>
           </div>
         </div>
-      </div>
-    </section>
-    <section id="references">
-      <div class="container">
-        <div class="col-sm-12">
-          <div class="mb-5 text-center">
-            <h2 data-animate="fadeInUp" class="title">My work</h2>
-            <p data-animate="fadeInUp" class="lead">I have worked on dozens of projects so I have picked only the latest for you.</p>
+      </li>
+      <li class="item">
+        <div class="testimonial full-height">
+          <div class="text">
+            <h5><b>12th</b></h5>
+            <h6><i class="fa fa-calendar"></i>&nbsp;2016</h6>
+            <br>
+            <p>PCM + CS + English</p>
+            <i class="fa fa-university" aria-hidden="true"></i>C.B.S.E<br>
+            <b>School: </b>Dayawati Modi Public School, Modinagar, Ghaziabad, Uttar Pradesh, India<br>
+            <b>Marks: 75.6%</b>
           </div>
-          <div id="references-masonry" data-animate="fadeInUp">
-            <div class="row">
-                  {% for project in projects %}
+        </div>
+      </li>
+      <li class="item">
+        <div class="testimonial full-height">
+          <div class="text">
+            <h5><b>10th</b></h5>
+            <h6><i class="fa fa-calendar"></i>&nbsp;2014</h6>
+            <p>General Curriculum</p>
+            <br>
+            <i class="fa fa-university" aria-hidden="true"></i>C.B.S.E<br>
+            <b>School: </b>Chhaya Public School, Modinagar, Ghaziabad, Uttar Pradesh, India<br>
+            <b>Marks: 8.6 CGPA</b>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+<center>
+  <h2 data-animate="fadeInDown" class="title">Other Skills</h2>
+</center>
 
-                    <div class="card reference-item col-lg-3 col-md-6">
-                      <a href="{% url 'project_detail' project.pk %}" target="_blank" style="color:white">
-                    <div class="card-body reference"><img src="{{ project.image.url }}" alt="{{ project.title|title }}" class="img-fluid">
-                        <div class="overlay">
-                          <div class="inner">
-                            <h3 class="h4 reference-title">{{ project.title|title }}</h3>
-                          </div>
-                        </div>
-                    </div></a>
-                  </div>
-                  {% endfor %}
+<section id="references">
+  <div class="container">
+    <div class="col-sm-12">
+      <div class="mb-5 text-center">
+        <h2 data-animate="fadeInUp" class="title">My work</h2>
+        <p data-animate="fadeInUp" class="lead">I have worked on dozens of projects so I have picked only the latest for
+          you.</p>
+      </div>
+      <div id="references-masonry" data-animate="fadeInUp">
+        <div class="card-group">
+          {% for project in projects %}
+          <div class="card">
+            <img class="card-img-top" src="{{ project.image.url }}" alt="{{ project.title|title }}">
+            <div class="card-body">
+              <h5 class="card-title">{{ project.title|title }}</h5>
+              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+                content. This content is a little bit longer.</p>
             </div>
+            <a href="{% url 'project_detail' project.pk %}" style="text-decoration: none;">
+              <div class="card-footer">
+                <small class="text-muted">Read More</small>
+              </div>
+            </a>
           </div>
+          {% endfor %}
+
         </div>
       </div>
-    </section>
+    </div>
+  </div>
+  <br><br>
+  <div data-animate="fadeInUp" class="text-center">
+    <p class="lead">Would you like to know more?</p>
+    <p><a href="{% url 'blog_index' %}" target="_blank" class="btn btn-outline-dark link-scroll">Blog</a>
+      <a href="{% url 'project_index' %}" target="_blank" class="btn btn-outline-dark link-scroll">Projects</a></p>
+  </div>
+  <br>
+  <hr data-animate="fadeInUp">
+</section>
 {% endblock %}
