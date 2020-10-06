@@ -11,3 +11,4 @@ class ModelCategory(admin.ModelAdmin):
 
 admin.site.register(Post, ModelPost)
 admin.site.register(Category, ModelCategory)
+admin.site.register(Comment)

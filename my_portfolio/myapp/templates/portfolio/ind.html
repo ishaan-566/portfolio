@@ -57,7 +57,7 @@
     </div>
   </div>
 </section>
-<section id="services" class="bg-gradient services-section">
+<section id="skills" class="bg-gradient services-section">
   <div class="container">
     <header class="text-center">
       <h2 data-animate="fadeInDown" class="title">Skills</h2>
@@ -98,7 +98,7 @@
       </div>
       <div data-animate="fadeInUp" class="col-lg-3">
         <div class="icon"><i class="fa fa-globe"></i></div>
-        <h3 class="heading mb-3 text-400">Web Technologies</h3>
+        <h3 class="heading mb-3 text-400">Technologies</h3>
         <ul class="text-left">
           {% for language in languages %}
           <li>{{ language.name }}</li>
@@ -116,7 +116,7 @@
     </div>
   </div>
 </section>
-<section id="testimonials" class="testimonials-section bg-gray">
+<section id="education" class="testimonials-section bg-gray">
   <div class="container">
     <header class="text-center mb-2">
       <h2 data-animate="fadeInUp" class="title">EDUCATION</h2>
@@ -164,11 +164,11 @@
     </ul>
   </div>
 </section>
-<center>
+<!-- <center>
   <h2 data-animate="fadeInDown" class="title">Other Skills</h2>
-</center>
+</center> -->
 
-<section id="references">
+<section id="references" style="padding-bottom: 0;">
   <div class="container">
     <div class="col-sm-12">
       <div class="mb-5 text-center">
@@ -205,6 +205,6 @@
       <a href="{% url 'project_index' %}" target="_blank" class="btn btn-outline-dark link-scroll">Projects</a></p>
   </div>
   <br>
-  <hr data-animate="fadeInUp">
+  <hr data-animate="fadeInUp" style="margin-bottom: 0; color:black">
 </section>
 {% endblock %}

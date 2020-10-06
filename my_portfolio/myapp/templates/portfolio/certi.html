@@ -124,7 +124,8 @@
     /* 100% Image Width on Smaller Screens */
     @media only screen and (max-width: 700px) {
         .modal-content {
-            width: 100%;
+            width: 90% !important;
+            height: auto !important;
         }
     }
 </style>
@@ -150,7 +151,7 @@
         </div>
         <div id="myModal" class="modal">
             <span class="close" onclick="close()">&times;</span>
-            <img class="modal-content" id="img01">
+            <img class="modal-content mt-2" id="img01">
             <div id="caption"></div>
         </div>
 </section>

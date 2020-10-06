@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from.models import *
 from .forms import CommentForm
-
+from django.core.mail import EmailMessage
 
 def blog_index(request):
     posts = Post.objects.all().order_by('-created_on')
@@ -9,6 +9,7 @@ def blog_index(request):
         "posts": posts,
     }
     return render(request, "blog/blog_index.html", context)
+
 
 
 def blog_category(request, category):
@@ -25,7 +26,7 @@ def blog_category(request, category):
 
 def blog_detail(request, pk):
     post = Post.objects.get(pk=pk)
-    comments = Comment.objects.filter(post=post)
+    comments = Comment.objects.filter(post=post).order_by('-id')
     form = CommentForm()
     if request.method == 'GET':
         form = CommentForm(request.GET)
@@ -36,6 +37,15 @@ def blog_detail(request, pk):
                 post=post
             )
             comment.save()
+            body = "Hello me,<br>{}<br> just post a comment on your Blog {}<br>.\"<i>{}</i>\"".format(form.cleaned_data["author"], post.title, form.cleaned_data["body"])
+            email = EmailMessage(
+                'Comment on Blog',
+                body,
+                '',
+                ['ishaanaggarwal566@gmail.com'],
+            )
+            email.content_subtype = "html"
+            email.send()
     context = {
         "post": post,
         "comments": comments,

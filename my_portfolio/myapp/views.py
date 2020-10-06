@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Project, Comment
 from blog.forms import CommentForm
+from django.core.mail import EmailMessage
 
 def project_index(request):
     projects = Project.objects.all().order_by('-id')
@@ -22,6 +23,18 @@ def project_detail(request, pk):
                 project=project
             )
             comment.save()
+            body = "Hello me,<br>{}<br> just post a comment on your project {}<br>.<i>\"{}\"</i>".format(form.cleaned_data["author"], project.title, form.cleaned_data["body"])
+            try:
+                email = EmailMessage(
+                    'Comment on project',
+                    body,
+                    '',
+                    ['ishaanaggarwal566@gmail.com'],
+                )
+                email.content_subtype = "html"
+                email.send()
+            except:
+                pass
 
             
     context = {
