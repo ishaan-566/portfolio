@@ -18,7 +18,7 @@
         </small>
         <p>{{ post.body|safe|linebreaks }}</p>
         <h3>Leave a comment:</h3>
-        <form action="/blog/{{ post.pk }}/" method="post">
+        <form action="/blog/{{ post.pk }}/" method="POST">
             {% csrf_token %}
             <div class="form-group">
                 {{ form.author }}

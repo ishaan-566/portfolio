@@ -28,8 +28,8 @@ def blog_detail(request, pk):
     post = Post.objects.get(pk=pk)
     comments = Comment.objects.filter(post=post).order_by('-id')
     form = CommentForm()
-    if request.method == 'GET':
-        form = CommentForm(request.GET)
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
         if form.is_valid():
             comment = Comment(
                 author=form.cleaned_data["author"],
