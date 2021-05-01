@@ -1,0 +1,38 @@
+hsdkasjhd
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch is up-to-date with 'origin/master'.
+#
+# Changes to be committed:
+#	modified:   my_portfolio/blog/__pycache__/__init__.cpython-37.pyc
+#	modified:   my_portfolio/blog/__pycache__/admin.cpython-37.pyc
+#	modified:   my_portfolio/blog/__pycache__/forms.cpython-37.pyc
+#	modified:   my_portfolio/blog/__pycache__/models.cpython-37.pyc
+#	modified:   my_portfolio/blog/__pycache__/urls.cpython-37.pyc
+#	modified:   my_portfolio/blog/__pycache__/views.cpython-37.pyc
+#	modified:   my_portfolio/blog/templates/blog/blog_detail.html
+#	modified:   my_portfolio/blog/templates/blog/blog_index.html
+#	modified:   my_portfolio/blog/views.py
+#	modified:   my_portfolio/db.sqlite3
+#	modified:   my_portfolio/my_portfolio/__pycache__/__init__.cpython-37.pyc
+#	modified:   my_portfolio/my_portfolio/__pycache__/settings.cpython-37.pyc
+#	modified:   my_portfolio/my_portfolio/__pycache__/urls.cpython-37.pyc
+#	modified:   my_portfolio/my_portfolio/__pycache__/views.cpython-37.pyc
+#	modified:   my_portfolio/my_portfolio/views.py
+#	modified:   my_portfolio/myapp/__pycache__/__init__.cpython-37.pyc
+#	modified:   my_portfolio/myapp/__pycache__/admin.cpython-37.pyc
+#	modified:   my_portfolio/myapp/__pycache__/models.cpython-37.pyc
+#	modified:   my_portfolio/myapp/__pycache__/urls.cpython-37.pyc
+#	modified:   my_portfolio/myapp/__pycache__/views.cpython-37.pyc
+#	modified:   my_portfolio/myapp/templates/portfolio/base.html
+#	modified:   my_portfolio/myapp/templates/portfolio/ind.html
+#	modified:   my_portfolio/myapp/views.py
+#
+# Untracked files:
+#	my_portfolio/project/Screenshot_113.png
+#	my_portfolio/project/Screenshot_21.png
+#	my_portfolio/project/Screenshot_23.png
+#	my_portfolio/project/Screenshot_36.png
+#
