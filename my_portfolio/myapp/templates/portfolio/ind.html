@@ -19,11 +19,11 @@
 <section id="about" class="about-section">
   <div class="container">
     <header class="text-center">
-      <h2 data-animate="fadeInDown" class="title">About me</h2>
+      <h2 class="title">About me</h2>
     </header>
     <div class="row">
       <br>
-      <div data-animate="fadeInUp" class="col-lg-6">
+      <div class="col-lg-6">
         <p>
           I am a hard working, honest individual. I am a good timekeeper, always willing to learn new skills. I am
           friendly, helpful and polite, have a good sense of humour. I am able to work independently in busy
@@ -39,8 +39,8 @@
           computing matters to me. It is ingrained in who I am.
         </p>
       </div>
-      <div data-animate="fadeInUp" class="col-lg-6">
-        <div data-animate="fadeInUp" class="col-sm-6 mx-auto mt-5"><img src="/media/project/img/about.jpg"
+      <div class="col-lg-6">
+        <div class="col-sm-6 mx-auto mt-5"><img src="/media/project/img/about.jpg"
             alt="This is me - Ishaan" class="image rounded-circle img-fluid"></div>
         <!-- {% for language in languages %}
               <div class="skill-item">
@@ -53,17 +53,17 @@
               </div>
             {% endfor %} -->
       </div>
-      <!-- <div data-animate="fadeInUp" class="col-sm-6 mx-auto mt-5"><img src="/media/project/img/about.jpg" alt="This is me - Ishaan" class="image rounded-circle img-fluid"></div> -->
+      <!-- <div class="col-sm-6 mx-auto mt-5"><img src="/media/project/img/about.jpg" alt="This is me - Ishaan" class="image rounded-circle img-fluid"></div> -->
     </div>
   </div>
 </section>
 <section id="skills" class="bg-gradient services-section">
   <div class="container">
     <header class="text-center">
-      <h2 data-animate="fadeInDown" class="title">Skills</h2>
+      <h2 class="title">Skills</h2>
     </header>
     <div class="row services text-center">
-      <div data-animate="fadeInUp" class="col-lg-3">
+      <div class="col-lg-3">
         <div class="icon"><i class="fa fa-database" aria-hidden="true"></i></div>
         <h3 class="heading mb-3 text-400">Database</h3>
         <p>
@@ -74,7 +74,7 @@
         </ul>
         </p>
       </div>
-      <div data-animate="fadeInUp" class="col-lg-3">
+      <div class="col-lg-3">
         <div class="icon"><i class="fa fa-desktop"></i></div>
         <h3 class="heading mb-3 text-400">Operating System</h3>
         <p>
@@ -85,7 +85,7 @@
         </ul>
         </p>
       </div>
-      <div data-animate="fadeInUp" class="col-lg-3">
+      <div class="col-lg-3">
         <div class="icon"><i class="fa fa-globe"></i></div>
         <h3 class="heading mb-3 text-400">Web Technologies</h3>
         <ul class="text-left">
@@ -96,7 +96,7 @@
           <li>p5.js</li>
         </ul>
       </div>
-      <div data-animate="fadeInUp" class="col-lg-3">
+      <div class="col-lg-3">
         <div class="icon"><i class="fa fa-globe"></i></div>
         <h3 class="heading mb-3 text-400">Technologies</h3>
         <ul class="text-left">
@@ -110,7 +110,7 @@
     </div>
     <br>
     <hr data-animate="fadeInUp">
-    <div data-animate="fadeInUp" class="text-center">
+    <div class="text-center">
       <p class="lead">Click here To View CERTTIFICATES</p>
       <p><a href="{% url 'certificate' %}" target="_blank" class="btn btn-outline-light link-scroll">Certificate</a></p>
     </div>
@@ -119,9 +119,9 @@
 <section id="education" class="testimonials-section bg-gray">
   <div class="container">
     <header class="text-center mb-2">
-      <h2 data-animate="fadeInUp" class="title">EDUCATION</h2>
+      <h2 class="title">EDUCATION</h2>
     </header>
-    <ul data-animate="fadeInUp" class="owl-carousel owl-theme testimonials equalize-height"
+    <ul class="owl-carousel owl-theme testimonials equalize-height"
       style="text-align: -webkit-center;">
       <li class="item">
         <div class="testimonial full-height">
@@ -165,26 +165,25 @@
   </div>
 </section>
 <!-- <center>
-  <h2 data-animate="fadeInDown" class="title">Other Skills</h2>
+  <h2 class="title">Other Skills</h2>
 </center> -->
 
 <section id="references" style="padding-bottom: 0;">
   <div class="container">
     <div class="col-sm-12">
       <div class="mb-5 text-center">
-        <h2 data-animate="fadeInUp" class="title">My work</h2>
-        <p data-animate="fadeInUp" class="lead">I have worked on dozens of projects so I have picked only the latest for
+        <h2 class="title">My work</h2>
+        <p class="lead">I have worked on dozens of projects so I have picked only the latest for
           you.</p>
       </div>
-      <div id="references-masonry" data-animate="fadeInUp">
+      <div id="references-masonry">
         <div class="card-group">
           {% for project in projects %}
           <div class="card">
             <img class="card-img-top" src="{{ project.image.url }}" alt="{{ project.title|title }}">
             <div class="card-body">
               <h5 class="card-title">{{ project.title|title }}</h5>
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-                content. This content is a little bit longer.</p>
+              <p class="card-text">{{ project.description|slice:":100" }}...</p>
             </div>
             <a href="{% url 'project_detail' project.pk %}" style="text-decoration: none;">
               <div class="card-footer">
@@ -199,12 +198,12 @@
     </div>
   </div>
   <br><br>
-  <div data-animate="fadeInUp" class="text-center">
+  <div class="text-center">
     <p class="lead">Would you like to know more?</p>
     <p><a href="{% url 'blog_index' %}" target="_blank" class="btn btn-outline-dark link-scroll">Blog</a>
       <a href="{% url 'project_index' %}" target="_blank" class="btn btn-outline-dark link-scroll">Projects</a></p>
   </div>
   <br>
-  <hr data-animate="fadeInUp" style="margin-bottom: 0; color:black">
+  <hr style="margin-bottom: 0; color:black">
 </section>
 {% endblock %}

@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from myapp.models import Project, Language, Certificate
 
+def sitemap(request):
+    return render(request, 'portfolio/sitemap.xml')
 
 def cv(request):
     projects = Project.objects.all().order_by('-id')[:3]
@@ -10,7 +12,7 @@ def cv(request):
         'projects': projects,
         'languages': languages
     }
-    return render(request, 'portfolio/ind.html',context)
+    return render(request, 'portfolio/ind.html', context)
 
 def certificate(request):
     certificates = list(Certificate.objects.all().order_by('-id'))

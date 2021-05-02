@@ -5,7 +5,7 @@
     <div class="container">
         <br><br>
         <header class="text-center mb-2">
-          <h2 data-animate="fadeInUp" class="title">{{ category | title }}</h2>
+          <h2 class="title">{{ category | title }}</h2>
         </header>
         {% for post in posts %}
             <h2><a href="{% url 'blog_detail' post.pk%}">{{ post.title }}</a></h2>
