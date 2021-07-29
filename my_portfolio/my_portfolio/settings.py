@@ -23,10 +23,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '41x02w%miufc4e%huft@ynkgfp$_b1%&&q*l=k0j1o7=l+p#g$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 
-ALLOWED_HOSTS = ['192.168.43.182','127.0.0.1', 'ishaan.pythonanywhere.com', 'localhost']
+ALLOWED_HOSTS = ['192.168.43.182','127.0.0.1', 'ishaan.pythonanywhere.com', 'localhost', '*']
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
@@ -83,39 +83,37 @@ WSGI_APPLICATION = 'my_portfolio.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-'''
 
-DATABASES = {
-        'default': {
-            'ENGINE': 'djongo',
-            'NAME': 'portfolio',
-            'ENFORCE_SCHEMA': False,
-            'CLIENT': {
-                'host': 'mongodb+srv://ishaan:ishaan566@cluster0.6hlju.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
-           
-                'username': 'ishaan',
-                'password': 'ishaan566',
-                'authSource': 'portfolio',
-                'authMechanism': 'SCRAM-SHA-1'
-            },
-            'LOGGING': {
-                'version': 1,
-                'loggers': {
-                    'djongo': {
-                        'level': 'DEBUG',
-                        'propagate': False,                        
-                    }
-                },
-             },
-        }
-    }
+
+# DATABASES = {
+#         'default': {
+#             'ENGINE': 'djongo',
+#             'NAME': 'portfolio',
+#             'ENFORCE_SCHEMA': False,
+#             'CLIENT': {
+#                 'host': 'mongodb+srv://ishaan:ishaan566@cluster0.6hlju.mongodb.net/portfolio?retryWrites=true&w=majority',
+#                 'username': 'ishaan',
+#                 'password': 'ishaan566',
+#                 'authSource': 'portfolio',
+#                 'authMechanism': 'SCRAM-SHA-1'
+#             },
+#             'LOGGING': {
+#                 'version': 1,
+#                 'loggers': {
+#                     'djongo': {
+#                         'level': 'DEBUG',
+#                         'propagate': False,                        
+#                     }
+#                 },
+#              },
+#         }
+#     }
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators

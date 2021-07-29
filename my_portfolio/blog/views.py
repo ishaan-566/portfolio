@@ -3,6 +3,9 @@ from.models import *
 from .forms import CommentForm
 from django.core.mail import EmailMessage
 
+def map(request):
+    return render(request, "blog/map.html")
+
 def blog_index(request):
     posts = Post.objects.all().order_by('-created_on')
     context = {
