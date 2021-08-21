@@ -1,0 +1,87 @@
+<html>
+  <head>
+    <!--Load the AJAX API-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+      // Load the Visualization API and the controls package.
+      google.charts.load('current', {'packages':['corechart', 'controls']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.charts.setOnLoadCallback(drawDashboard);
+
+      // Callback that creates and populates a data table,
+      // instantiates a dashboard, a range slider and a pie chart,
+      // passes in the data and draws it.
+      function drawDashboard() {
+
+        // Create our data table.
+        var data = google.visualization.arrayToDataTable([
+          ['Name', 'Donuts eaten'],
+          ['Michael' , 5],
+          ['Elisa', 7],
+          ['Robert', 3],
+          ['John', 2],
+          ['Jessica', 6],
+          ['Aaron', 1],
+          ['Margareth', 8]
+        ]);
+
+        // Create a dashboard.
+        var dashboard = new google.visualization.Dashboard(
+            document.getElementById('dashboard_div'));
+
+        // Create a range slider, passing some options
+        var donutRangeSlider = new google.visualization.ControlWrapper({
+          'controlType': 'NumberRangeFilter',
+          'containerId': 'filter_div',
+          'options': {
+            'filterColumnLabel': 'Donuts eaten'
+          }
+        });
+
+        // Create a pie chart, passing some options
+        var pieChart = new google.visualization.ChartWrapper({
+          'chartType': 'PieChart',
+          'containerId': 'chart_div',
+          'options': {
+            'width': 300,
+            'height': 300,
+            'pieSliceText': 'value',
+            'legend': 'right'
+          }
+        });
+
+        // Establish dependencies, declaring that 'filter' drives 'pieChart',
+        // so that the pie chart will only display entries that are let through
+        // given the chosen slider range.
+        dashboard.bind(donutRangeSlider, pieChart);
+
+        // Draw the dashboard.
+        dashboard.draw(data);
+      }
+    </script>
+  </head>
+
+  <body>
+    <!--Div that will hold the dashboard-->
+    <div id="dashboard_div" style="border: 1px solid #ccc; margin-top: 1em">
+        <p style="padding-left: 1em"><strong>Donuts eaten per person</strong></p>
+        <table class="columns">
+          <tbody><tr>
+            <td>
+              <div id="slider_div" style="padding-left: 15px"><div class="google-visualization-controls-rangefilter"><label class="google-visualization-controls-label">Age Filter:</label><div><div class="goog-inline-block"><span class="google-visualization-controls-rangefilter-thumblabel">3.0</span><div class="google-visualization-controls-slider-horizontal" role="slider" aria-valuemin="0" aria-valuemax="51" aria-valuenow="0" tabindex="0"><div class="google-visualization-controls-slider-handle" role="button" style="width: 182px; left: 0px;"></div><div class="google-visualization-controls-slider-thumb" role="button" style="left: 0px;"></div><div class="google-visualization-controls-slider-thumb" role="button" style="left: 182px;"></div></div><span class="google-visualization-controls-rangefilter-thumblabel">54.0</span></div></div></div></div>
+            </td><td>
+              <div id="categoryPicker_div"><div class="google-visualization-controls-categoryfilter"><label class="google-visualization-controls-label">Gender Selection:</label><div><div class="goog-inline-block goog-menu-button" role="listbox" aria-expanded="false" tabindex="0" aria-haspopup="true" aria-activedescendant=":6" style="user-select: none;"><div class="goog-inline-block goog-menu-button-outer-box"><div class="goog-inline-block goog-menu-button-inner-box"><div class="goog-inline-block goog-menu-button-caption" id=":6" role="option" aria-selected="true" aria-setsize="3" aria-posinset="3">Male</div><div class="goog-inline-block goog-menu-button-dropdown">&nbsp;</div></div></div></div></div></div></div>
+            </td>
+          </tr><tr>
+            <td>
+              <div id="chart_div" style="padding-top: 15px"><div style="position: relative;"><div dir="ltr" style="position: relative; width: 300px; height: 300px;"><div aria-label="A chart." style="position: absolute; left: 0px; top: 0px; width: 100%; height: 100%;"><svg width="300" height="300" aria-label="A chart." style="overflow: hidden;"><defs id="_ABSTRACT_RENDERER_ID_4"></defs><rect x="0" y="0" width="300" height="300" stroke="none" stroke-width="0" fill="#ffffff"></rect><g><path d="M158,158L158,16A142,142,0,0,1,198.006023071483,294.2480022532586L158,158A0,0,0,0,0,158,158" stroke="#ffffff" stroke-width="1" fill="#3366cc"></path><text text-anchor="start" x="249.248293961792" y="145.9986883783172" font-family="Arial" font-size="11" stroke="none" stroke-width="0" fill="#ffffff">Michael</text></g><g><path d="M158,158L81.22900392130505,38.54199833797233A142,142,0,0,1,158,16L158,158A0,0,0,0,0,158,158" stroke="#ffffff" stroke-width="1" fill="#109618"></path><text text-anchor="start" x="109.3954351761528" y="45.70051879155245" font-family="Arial" font-size="11" stroke="none" stroke-width="0" fill="#ffffff">Aaron</text></g><g><path d="M158,158L17.445355252907547,178.20870703480648A142,142,0,0,1,81.22900392130516,38.54199833797226L158,158A0,0,0,0,0,158,158" stroke="#ffffff" stroke-width="1" fill="#ff9900"></path><text text-anchor="start" x="38.84568546606985" y="112.91426423800952" font-family="Arial" font-size="11" stroke="none" stroke-width="0" fill="#ffffff">John</text></g><g><path d="M158,158L198.006023071483,294.2480022532586A142,142,0,0,1,17.445355252907547,178.20870703480648L158,158A0,0,0,0,0,158,158" stroke="#ffffff" stroke-width="1" fill="#dc3912"></path><text text-anchor="start" x="78.24628228485784" y="260.2747059683761" font-family="Arial" font-size="11" stroke="none" stroke-width="0" fill="#ffffff">Robert</text></g><g></g></svg><div aria-label="A tabular representation of the data in the chart." style="position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden;"><table><thead><tr><th>Name</th><th>Donuts eaten</th></tr></thead><tbody><tr><td>Michael</td><td>5</td></tr><tr><td>Robert</td><td>3</td></tr><tr><td>John</td><td>2</td></tr><tr><td>Aaron</td><td>1</td></tr></tbody></table></div></div></div><div aria-hidden="true" style="display: none; position: absolute; top: 310px; left: 310px; white-space: nowrap; font-family: Arial; font-size: 11px;">Miranda</div><div></div></div></div>
+            </td><td>
+              <div id="table_div" style="padding-top: 30px"><div class="google-visualization-table" style="position: relative; z-index: 0; max-width: 100%; max-height: 100%;"><div style="position: relative; overflow: auto; max-width: 100%; max-height: 100%;"><table cellspacing="0" class="google-visualization-table-table"><thead><tr class="google-visualization-table-tr-head"><th class="google-visualization-table-th gradient unsorted" tabindex="0" role="button" aria-label="Sort column">Name<span class="google-visualization-table-sortind"></span></th><th class="google-visualization-table-th gradient unsorted" tabindex="0" role="button" aria-label="Sort column">Gender<span class="google-visualization-table-sortind"></span></th><th class="google-visualization-table-th gradient google-visualization-table-type-number unsorted" tabindex="0" role="button" aria-label="Sort column">Age<span class="google-visualization-table-sortind"></span></th><th class="google-visualization-table-th gradient google-visualization-table-type-number unsorted" tabindex="0" role="button" aria-label="Sort column">Donuts eaten<span class="google-visualization-table-sortind"></span></th></tr></thead><tbody><tr class="google-visualization-table-tr-even"><td colspan="1" class="google-visualization-table-td">Michael</td><td colspan="1" class="google-visualization-table-td">Male</td><td colspan="1" class="google-visualization-table-type-number google-visualization-table-td">12</td><td colspan="1" class="google-visualization-table-type-number google-visualization-table-td">5</td></tr><tr class="google-visualization-table-tr-odd"><td colspan="1" class="google-visualization-table-td">Robert</td><td colspan="1" class="google-visualization-table-td">Male</td><td colspan="1" class="google-visualization-table-type-number google-visualization-table-td">7</td><td colspan="1" class="google-visualization-table-type-number google-visualization-table-td">3</td></tr><tr class="google-visualization-table-tr-even"><td colspan="1" class="google-visualization-table-td">John</td><td colspan="1" class="google-visualization-table-td">Male</td><td colspan="1" class="google-visualization-table-type-number google-visualization-table-td">54</td><td colspan="1" class="google-visualization-table-type-number google-visualization-table-td">2</td></tr><tr class="google-visualization-table-tr-odd"><td colspan="1" class="google-visualization-table-td">Aaron</td><td colspan="1" class="google-visualization-table-td">Male</td><td colspan="1" class="google-visualization-table-type-number google-visualization-table-td">3</td><td colspan="1" class="google-visualization-table-type-number google-visualization-table-td">1</td></tr></tbody></table></div></div></div>
+            </td>
+          </tr>
+        </tbody></table>
+      </div>
+  </body>
+</html>

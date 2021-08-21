@@ -1,0 +1,53 @@
+{% extends "portfolio/base.html" %}
+{% block styles %}
+<style>
+    #module {
+        background-color: #f8f9fa;
+        border-radius: 8%;
+        padding: 7%;
+        margin: 10px;
+        box-sizing: border-box;
+        box-shadow: 13px 8px 20px 4px #88888891;
+        height: auto;
+    }
+</style>
+{% endblock styles %}
+{% block body %}
+<section id="testimonials" class="testimonials-section bg-gray">
+    <div class="container">
+        <br><br>
+        <div class="row justify-content-center">
+            <div class="col-md-8" id="module">
+                <a href="/private/summary">
+                    <div style="text-align-last: center;">
+                        <img src="/media/project/img/logo-big.png" alt="logo" width="130">
+                    </div>
+                </a>
+                {% if error %}
+                <p class="text-danger">*&nbsp;{{ error }}</p>
+                {% endif %}
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="entry_date" class="form-label">Date</label>
+                        <input type="date" class="form-control" id="entry_date" name="entry_date" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="receive" class="form-label">Earnings</label>
+                        <input type="number" class="form-control" id="receive" name="receive" value=0>
+                    </div>
+                    <div class="mb-3">
+                        <label for="spend" class="form-label">Bill Payment</label>
+                        <input type="number" class="form-control" id="spend" name="spend" value=0>
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Description</label>
+                        <textarea class="form-control" id="description" name="description">Summary</textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock body %}
