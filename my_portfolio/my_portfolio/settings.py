@@ -26,7 +26,7 @@ SECRET_KEY = '41x02w%miufc4e%huft@ynkgfp$_b1%&&q*l=k0j1o7=l+p#g$'
 DEBUG = True
 
 
-ALLOWED_HOSTS = ['192.168.43.182','127.0.0.1', 'ishaan.pythonanywhere.com', 'localhost', '*']
+ALLOWED_HOSTS = ['192.168.0.110', '192.168.43.182','127.0.0.1', 'ishaan.pythonanywhere.com', 'localhost', '*']
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'myapp',
     'blog',
+    'private'
 ]
 
 MIDDLEWARE = [

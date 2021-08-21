@@ -23,6 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('project/', include('myapp.urls')),
     path('blog/', include('blog.urls')),
+    path('private/', include('private.urls')),
     path('', cv, name='cv'),
     path('sitemap.xml', sitemap, name='sitemap'),
     path('certificates/', certificate, name='certificate')

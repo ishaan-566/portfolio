@@ -3,53 +3,6 @@
 {% block title %}Certificate{% endblock %}
 {% block styles %}
 <style>
-    * {
-        box-sizing: border-box;
-    }
-
-    .header {
-        text-align: center;
-        padding: 32px;
-    }
-
-    .rows {
-        display: -ms-flexbox;
-        display: flex;
-        -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-        padding: 0 4px;
-    }
-
-    .column {
-        -ms-flex: 25%;
-        flex: 25%;
-        max-width: 25%;
-        padding: 0 4px;
-    }
-
-    .column img {
-        margin-top: 8px;
-        vertical-align: middle;
-        width: 100%;
-    }
-
-    @media screen and (max-width: 800px) {
-        .column {
-            -ms-flex: 50%;
-            flex: 50%;
-            max-width: 50%;
-        }
-    }
-
-    @media screen and (max-width: 600px) {
-        .column {
-            -ms-flex: 100%;
-            flex: 100%;
-            max-width: 100%;
-        }
-    }
-</style>
-<style>
     #myImg {
         border-radius: 5px;
         cursor: pointer;
@@ -137,23 +90,25 @@
         <header class="text-center mb-2">
             <h2 class="title">CERTIFICATES</h2>
         </header>
-        <div class="rows">
-            {% for cl in certificates %}
-            <div class="column">
+        {% for cl in certificates %}
+            <div class="row">
                 {% for c in cl %}
-                <img id="myImg" {% if c %} src="{{ c.image.url }}" alt="{{ c.title|upper }}"
-                    onclick="modalFunction('{{ c.image.url }}', '{{ c.title|upper }}')" {% else %}
-                    src="/media/project/certificates/yousawnothing.jpg" alt="{{ c.title }}" {% endif %}
+                <div class="col-md-3" style="align-self:center">
+                    <h6 style="text-decoration:underline;">{{ c.title|upper }}</h6>
+                    <img id="myImg" src="{{ c.image.url }}" alt="{{ c.title|upper }}"
+                    onclick="modalFunction('{{ c.image.url }}', '{{ c.title|upper }}')"
                     style="width:100%">
+                </div>
                 {% endfor %}
             </div>
-            {% endfor %}
-        </div>
+        <hr>
+        {% endfor %}
         <div id="myModal" class="modal">
             <span class="close" onclick="close()">&times;</span>
-            <img class="modal-content mt-2" id="img01">
+            <img src="" class="modal-content mt-2" id="img01">
             <div id="caption"></div>
         </div>
+    </div>
 </section>
 {% endblock %}
 
@@ -161,7 +116,7 @@
 <script>
     var modal = document.getElementById("myModal");
     function modalFunction(image, caption) {
-        
+
         var modalImg = document.getElementById("img01");
         var captionText = document.getElementById("caption");
         modal.style.display = "block";

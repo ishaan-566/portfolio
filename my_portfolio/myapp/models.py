@@ -19,6 +19,9 @@ class Project(models.Model):
     slide = models.TextField(blank=True)
     document = models.TextField(blank=True)
 
+    def __str__(self):
+        return str(self.title)
+
 
 class Comment(models.Model):
     author = models.CharField(max_length=60)
