@@ -1,0 +1,56 @@
+{% extends "portfolio/base.html" %}
+{% block styles %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap5.min.css">
+<style>
+    table {
+        border: 1px solid black;
+    }
+    td {
+        vertical-align: middle !important;
+    }
+    #example_wrapper > :nth-child(2){
+        overflow-x: scroll !important;
+    }
+</style>
+{% endblock styles %}
+{% block body %}
+<section id="testimonials" class="testimonials-section bg-gray">
+    <div class="container">
+        <br><br>
+        <div class="row">
+            <div class="col-6 bg-info accordion-body"></div>
+            <div class="col-6 bg-warning accordion-body"></div>
+        </div>
+        <br>
+        <table id="example" class="table table-striped" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>City</th>
+                    <th>Link</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for card in cards %}
+                    <tr>
+                        <td>{{ card.title }}</td>
+                        <td>{{ card.city }}</td>
+                        <td><a href="/private/card-{{card.pk}}" class='btn btn-sm btn-primary'>click</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+{% endblock body %}
+{% block scripts %}
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap5.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#example').DataTable();
+    });
+</script>
+{% endblock scripts %}

@@ -1,0 +1,125 @@
+{% extends "portfolio/base.html" %}
+{% load static %}
+{% block title %}{{ card.title|title }}{% endblock %}
+{% block styles %}
+<style>
+    /* @media screen and (min-width: 1000px) {
+        #whatsapp {
+            display: none
+        }
+    } */
+    #action{
+        font-size: larger;
+        cursor: pointer;
+        width: fit-content;
+    }
+    .fa-hand-point-left{
+        animation: hand 1s infinite;
+    }
+    @keyframes hand {
+        50%{transform: translateX(10px);}
+  100%{transform: translateX(0px);}
+    }
+    #front {
+        width: -webkit-fill-available;
+        border-radius: 20px;
+    }
+
+    .is-flipped {
+        transform: translateX(-100%) rotateY(-180deg);
+    }
+
+    #back {
+        width: -webkit-fill-available;
+        border-radius: 20px;
+        display: none;
+        transform: rotateY(180deg);
+    }
+
+    .card-holder {
+        position: relative;
+        transition: transform 1s;
+        transform-style: preserve-3d;
+        cursor: pointer;
+        border-radius: 20px;
+        border: 1px solid grey;
+        padding: 5px;
+        transform-origin: center right;
+    }
+</style>
+{% endblock styles %}
+{% block body %}
+<section id="testimonials" class="testimonials-section bg-gray">
+    <div class="container">
+        <br><br>
+        <header class="text-center mb-2">
+            <h2 class="title">{{ card.title | title }}</h2>
+        </header>
+        <div class="row">
+            <div class="col-md-7">
+                <div class="card-holder">
+                    <img src="https://drive.google.com/uc?export=view&id={{card.front}}" id="front">
+                    <img src="https://drive.google.com/uc?export=view&id={{card.back}}" id="back">
+                </div>
+                <br><br>
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-4">
+                <h4>Action</h4>
+                <div id="action">
+                    <i class="fas fa-sync-alt"></i>&nbsp;<span class="text-primary" id="front-back">Front</span>&nbsp;&nbsp;
+                <a id="whatsapp"
+                    href="whatsapp://send?text=View {{ card.title }} details on https://ishaan.pythonanywhere.com/private/card-{{ card.pk }}"
+                    data-action="share/whatsapp/share" target="_blank">
+                    <i class="fab fa-whatsapp">&nbsp;Share</i>
+                </a>
+                </div>
+                <br><br>
+                <h4>Description</h4><br>
+                <table class="table table-bordered table-hover table-striped">
+                    <tr>
+                        <td>Name</td>
+                        <td>{{ card.title }}</td>
+                    </tr>
+                    <tr>
+                        <td>City</td>
+                        <td>{{ card.city }}</td>
+                    </tr>
+                    <tr>
+                        <td>Address</td>
+                        <td>{{ card.address }}</td>
+                    </tr>
+                    <tr>
+                        <td>Phone</td>
+                        <td><a href="tel:{{ card.phone }}" style="text-decoration: none;">{{ card.phone }}</a>&nbsp;<i class="far fa-hand-point-left"></i></td>
+                    </tr>
+                    <tr>
+                        <td>Whatsapp</td>
+                        <td><a href="https://wa.me/+91{{ card.whatsapp }}" style="text-decoration: none;">{{ card.whatsapp }}</a>&nbsp;<i class="far fa-hand-point-left"></i></td>
+                    </tr>
+                </table>
+                
+            </div>
+        </div>
+</section>
+{% endblock %}
+{% block scripts %}
+<script>
+    var card = document.querySelector('.card-holder');
+    var flip = document.getElementById('front-back');
+    flip.addEventListener('click', function () {
+        card.classList.toggle('is-flipped');
+        if (flip.innerHTML === 'Front') {
+            flip.innerHTML = 'Back';
+            document.getElementById('front').style.display = 'none';
+            document.getElementById('back').style.display = 'block';
+        }
+        else {
+            flip.innerHTML = 'Front';
+            document.getElementById('back').style.display = 'none';
+            document.getElementById('front').style.display = 'block';
+        }
+    });
+
+</script>
+{% endblock scripts %}
