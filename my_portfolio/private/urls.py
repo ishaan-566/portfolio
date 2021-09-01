@@ -10,5 +10,7 @@ urlpatterns = [
     path('logout', logout, name='logout'),
     path('data', data, name='data'),
     path('shop', shop, name='shop'),
-    path('summary', summary, name='summary')
+    path('summary', summary, name='summary'),
+    path('cards', cards, name='cards'),
+    path("card-<int:pk>/", card, name="card"),
 ]

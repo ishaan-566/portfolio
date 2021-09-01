@@ -6,8 +6,8 @@ class Vcard(models.Model):
     address = models.TextField()
     phone = models.CharField(max_length=15)
     whatsapp = models.CharField(max_length=15, blank=True)
-    front = models.ImageField(upload_to='project/vcards')
-    back = models.ImageField(upload_to='project/vcards', blank=True)
+    front = models.CharField(max_length=50)
+    back = models.CharField(max_length=50)
 
     def __str__(self):
         return str(self.title)

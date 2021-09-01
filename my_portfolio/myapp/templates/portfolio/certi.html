@@ -95,8 +95,8 @@
                 {% for c in cl %}
                 <div class="col-md-3" style="align-self:center">
                     <h6 style="text-decoration:underline;">{{ c.title|upper }}</h6>
-                    <img id="myImg" src="{{ c.image.url }}" alt="{{ c.title|upper }}"
-                    onclick="modalFunction('{{ c.image.url }}', '{{ c.title|upper }}')"
+                    <img id="myImg" src="https://drive.google.com/uc?export=view&id={{ c.image }}" alt="{{ c.title|upper }}"
+                    onclick='modalFunction("{{ c.image }}", "{{ c.title|upper }}")'
                     style="width:100%">
                 </div>
                 {% endfor %}
@@ -120,7 +120,7 @@
         var modalImg = document.getElementById("img01");
         var captionText = document.getElementById("caption");
         modal.style.display = "block";
-        modalImg.src = image;
+        modalImg.src = "https://drive.google.com/uc?export=view&id="+image;
         captionText.innerHTML = caption;
     }
     var span = document.getElementsByClassName("close")[0];

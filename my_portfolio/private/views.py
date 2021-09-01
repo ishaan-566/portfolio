@@ -11,11 +11,7 @@ def data(request):
 def home(request):
     template = 'private/home.html'
     if request.session.has_key('login'):
-        cards = Vcard.objects.all()
-        context = {
-            'cards': cards
-        }
-        return render(request, template, context)
+        return render(request, template)
     else:
         return redirect('private:login')
 
@@ -37,8 +33,10 @@ def login(request):
             return redirect('private:home')
         return render(request, "private/login.html", {'error': 'Invalid Username or Password'})
     return render(request, "private/login.html")
+
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
+
 def shop(request):
     template = "private/shop.html"
     if request.method == 'POST':
@@ -89,6 +87,9 @@ def summary(request):
     "client_x509_cert_url": 'https://www.googleapis.com/robot/v1/metadata/x509/ishaan%40sheets-323915.iam.gserviceaccount.com'
     }
 
+
+# https://drive.google.com/uc?export=view&id=18ExT0Y8AHhhD5uJUSnSCOpCMtDMT2R5q
+
     creds = ServiceAccountCredentials.from_json_keyfile_dict(data, scope)
     client = gspread.authorize(creds)
     sheet = client.open("shop_expenditure").sheet1 
@@ -108,3 +109,18 @@ def summary(request):
     totalearned = sum(map(int, newdf['EARNINGS']))
         
     return render(request, template, {'rows': python_sheet[1:], 'spend': totalspend, 'earned': totalearned})
+
+
+def cards(request):
+    template = 'private/cards.html'
+    context = dict()
+    card_list = Vcard.objects.all()
+    context['cards'] = card_list
+    return render(request, template, context)
+
+def card(request, pk):
+    card = Vcard.objects.get(pk=pk)
+    context = {
+        'card': card,
+    }
+    return render(request, 'private/card-details.html', context)
