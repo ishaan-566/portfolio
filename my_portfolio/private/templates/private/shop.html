@@ -23,8 +23,11 @@
                         <img src="/media/project/img/logo-big.png" alt="logo" width="130">
                     </div>
                 </a>
-                {% if error %}
-                <p class="text-danger">*&nbsp;{{ error }}</p>
+                {% if err %}
+                <p class="text-danger">*&nbsp;{{ err }}</p>
+                {% endif %}
+                {% if msg %}
+                <p class="text-success">*&nbsp;{{ msg }}</p>
                 {% endif %}
                 <form action="" method="POST">
                     {% csrf_token %}

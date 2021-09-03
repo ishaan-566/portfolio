@@ -54,22 +54,28 @@ def shop(request):
         "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
         "client_x509_cert_url": 'https://www.googleapis.com/robot/v1/metadata/x509/ishaan%40sheets-323915.iam.gserviceaccount.com'
         }
+        try:
+            creds = ServiceAccountCredentials.from_json_keyfile_dict(data, scope)
+            client = gspread.authorize(creds)
+            sheet = client.open("shop_expenditure").sheet1 
 
-        creds = ServiceAccountCredentials.from_json_keyfile_dict(data, scope)
-        client = gspread.authorize(creds)
-        sheet = client.open("shop_expenditure").sheet1 
+            python_sheet = sheet.get_all_values()
 
-        python_sheet = sheet.get_all_values()
+            date = request.POST['entry_date']
+            earnings = str(int(request.POST['receive']))
+            spend = str(int(request.POST['spend']))
+            desc = request.POST['description']
+            report = [date, earnings, spend, desc]
+            sheet.insert_row(report,len(python_sheet)+1)
+            return render(request, template, context={
+                'msg': "[ "+', '.join(report)+" ] following data has been added successfully",
+            })
+        except:
+            return render(request, template, context={
+                'err': 'There is some error while processing'
+            })
 
-        date = request.POST['entry_date']
-        earnings = str(int(request.POST['receive']))
-        spend = str(int(request.POST['spend']))
-        desc = request.POST['description']
-        report = [date, earnings, spend, desc]
-        sheet.insert_row(report,len(python_sheet)+1)
-        return HttpResponse(" ".join(report))
-
-    return render(request, template)
+    return render(request, template, context={'err': None, 'msg': None})
 
 
 def summary(request):
