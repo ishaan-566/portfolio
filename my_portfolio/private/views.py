@@ -114,7 +114,7 @@ def summary(request):
     totalspend = sum(map(int, newdf['SPEND']))
     totalearned = sum(map(int, newdf['EARNINGS']))
         
-    return render(request, template, {'rows': python_sheet[1:], 'spend': totalspend, 'earned': totalearned})
+    return render(request, template, {'rows': python_sheet[1:], 'spend': totalspend, 'earned': totalearned, 'saving': totalearned-totalspend})
 
 
 def cards(request):
