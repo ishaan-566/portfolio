@@ -13,7 +13,7 @@ class Post(models.Model):
     body = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
     last_modified = models.DateTimeField(auto_now=True)
-    categories = models.ManyToManyField('Category', related_name='posts')
+    categories = models.ManyToManyField('Category', related_name='posts', )
     
     def __str__(self):
         return str(self.title)

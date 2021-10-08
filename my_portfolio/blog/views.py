@@ -8,8 +8,18 @@ def map(request):
 
 def blog_index(request):
     posts = Post.objects.all().order_by('-created_on')
+    categories = Category.objects.all()
+    temp = []
+    class Temp_Category:
+        def __init__(self, name, count):
+            self.name = name
+            self.count = count
+    for c in categories:
+        post = Post.objects.filter(categories__name__contains=c.name)
+        temp.append(Temp_Category(c.name, len(post)))
     context = {
         "posts": posts,
+        "categories": temp
     }
     return render(request, "blog/blog_index.html", context)
 
@@ -19,10 +29,20 @@ def blog_category(request, category):
     posts = Post.objects.filter(
         categories__name__contains=category
     ).order_by('-created_on')
-
+    categories = Category.objects.all()
+    temp = []
+    class Temp_Category:
+        def __init__(self, name, count):
+            self.name = name
+            self.count = count
+    for c in categories:
+        post = Post.objects.filter(categories__name__contains=c.name)
+        if not c.name == category:
+            temp.append(Temp_Category(c.name, len(post)))
     context = {
         "category": category,
-        "posts": posts
+        "posts": posts,
+        "categories": temp
     }
     return render(request, "blog/blog_category.html", context)
 

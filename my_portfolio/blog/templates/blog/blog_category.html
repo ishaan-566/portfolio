@@ -1,27 +1,106 @@
 {% extends "portfolio/base.html" %}
 {% block title %}Blog-{{ category|title }}{% endblock %}
+{% block styles %}
+<style>
+    ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    li {
+        padding: 5px;
+    }
+
+    li span {
+        color: black;
+        width: 30px;
+        padding: 2px;
+        background-color: #f1f1f1;
+        border-radius: 5px;
+        float: right;
+        text-align: -webkit-center;
+    }
+
+    #blogs,
+    #categories {
+        background-color: white;
+        padding: 15px;
+        border-radius: 1rem;
+        box-shadow: 0 13px 8px -10px rgb(0 0 0 / 10%);
+    }
+</style>
+{% endblock %}
 {% block body %}
 <section id="testimonials" class="testimonials-section bg-gray">
     <div class="container">
         <br><br>
-        <header class="text-center mb-2">
-          <h2 class="title">{{ category | title }}</h2>
-        </header>
-        {% for post in posts %}
-            <h2><a href="{% url 'blog_detail' post.pk%}">{{ post.title }}</a></h2>
-            <small>
-                {{ post.created_on.date }} |&nbsp;
-                Categories:&nbsp;
-                {% for category in post.categories.all %}
-                    <a href="{% url 'blog_category' category.name %}">
-                        {{ category.name }}
-                    </a>&nbsp;
-                {% endfor %}
-            </small>
-            <br>
-            <hr>
-            <!--<p>{{ post.body|safe | slice:":400" }}...</p>-->
-        {% endfor %}
+        <div class="text-center mb-2">
+            <h2 class="title">{{ category | title }}</h2>
+        </div>
+        <div class="row">
+            <div class="col-md-8" style="margin-bottom : 10px;">
+                <div id="blogs">
+                    {% for post in posts %}
+                    <div class="row">
+                        <div class="col-md-12">
+                            <small>
+                                {{ post.created_on.date }}
+                            </small>
+                            <h4><a href="{% url 'blog_detail' post.pk%}">{{ post.title|title }}</a></h4>
+                            <small>
+                                Categories:&nbsp;
+                                {% for category in post.categories.all %}
+                                <a href="{% url 'blog_category' category.name %}">
+                                    {{ category.name }}
+                                </a>&nbsp;
+                                {% endfor %}
+                            </small>
+                        </div>
+                    </div>
+                    <hr>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-md-4" style="margin-top: 10px;">
+                <div id="categories">
+                    <h4>
+                        Other Categories
+                        <button class="btn" type="button" data-toggle="collapse" data-target="#collapse-list"
+                            aria-expanded="false" aria-controls="collapse-list" style="float: right;"
+                            onclick="changeicon()">
+                            <i class="fas fa-caret-up" id='change' ></i>
+                        </button>
+                    </h4>
+                    <br>
+                    <hr>
+                    <div id="category-list">
+                        <ul class="collapse" id="collapse-list">
+                            {% for category in categories %}
+                            <a href="{% url 'blog_category' category.name %}">
+                                <li>{{ category.name }}&nbsp;<span>{{ category.count }}</span></li>
+                            </a>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
+{% endblock %}
+{% block scripts %}
+<script>
+    function changeicon() {
+        var icon = document.getElementById('change');
+        if (icon.classList.contains('fa-caret-up')) {
+            icon.classList.remove('fa-caret-up')
+            icon.classList.add('fa-caret-down')
+        }
+        else {
+            icon.classList.add('fa-caret-up')
+            icon.classList.remove('fa-caret-down')
+        }
+
+    }
+</script>
 {% endblock %}

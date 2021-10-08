@@ -1,0 +1,668 @@
+<style>
+    .codeBox {
+        border: 1px solid #25a186;
+        border-left: 10px solid #25a186;
+        overflow: auto;
+        padding: 10px;
+        font-size: 80%;
+    }
+
+    .syntaxBox {
+        border: 1px solid #25a186;
+        border-top: 5px solid #25a186;
+        overflow: auto;
+        padding: 10px;
+        margin-top: 0px;
+        font-size: 80%;
+        margin-bottom: 10px;
+    }
+
+    .outputBoxLabel {
+        background: #25a186;
+        margin: 0px;
+        border-radius: 5px 5px 0px 0px;
+        padding: 5px 40px;
+        color: white;
+        width: fit-content;
+        font-weight: bold;
+        text-align: center;
+        max-width: 320px;
+        font-size: 80%;
+        margin-top: 10px;
+    }
+
+    .outputBox {
+        border-top: 5px solid #25a186;
+        padding: 10px;
+        margin-top: 0px;
+        font-weight: bold;
+        white-space: pre-wrap;
+        color: white;
+        background-color: black;
+        font-size: 80%;
+    }
+
+    .noteBox {
+        border: 1px solid #25a186;
+        border-left: 10px solid #25a186;
+        font-size: 80%;
+        overflow: auto;
+        padding: 10px;
+        font-style: italic;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+</style>
+<div class='container'>
+    <div class='container'>
+        <div dir="ltr" style="text-align: left;">
+            <h1>ArrayList in Java</h1>
+            <div>
+                In this article, we are going to discuss ArrayList in Java. ArrayList is a class from the Java
+                Collection Framework and widely in our programs. We use ArrayList as a substitute for the array. So, it
+                is important to know ArrayList in detail. We are going to see what is ArrayList in Java, how we can
+                create the instance of ArrayList and the methods provided by the ArrayList in Java.
+            </div>
+            <br/>
+            <h2>Content of the Article</h2>
+            <ul>
+                <li><a href="#what-is-arraylist-in-java">What is ArrayList in Java?</a>
+                <li><a href="#hierarchy-of-the-arraylist-in-java">Hierarchy of the ArrayList in java?</a>
+                <li><a href="#how-to-create-objects-of-arraylist-in-java">How to create objects of ArrayList in
+                        Java?</a>
+                <li><a href="#how-to-create-an-arraylist-of-custom-objects">How to create an ArrayList of Custom
+                        Objects?</a>
+                <li><a href="#how-to-iterate-arraylist-in-java">How to iterate ArrayList in Java?</a>
+                <li><a href="#how-to-get-the-elements-by-index-from-arraylist-in-java">How to get the elements by index
+                        from ArrayList in Java?</a>
+                <li><a href="#how-to-check-whether-an-elements-is-stored-in-the-arraylist-in-java">How to check whether
+                        an elements is stored in the ArrayList in Java?</a>
+                <li><a href="#how-to-remove-elements-from-the-arraylist-in-java">How to remove elements from the
+                        ArrayList in Java?</a>
+                <li><a href="#few-more-methods-of-arraylist-in-java">Few more methods of ArrayList in Java?</a>
+            </ul>
+            <br />
+            <h2 id="what-is-arraylist-in-java">What is ArrayList in Java?</h2>
+            <div>
+                ArrayList in Java is a List in which we can store and retrieve elements like an array but it provides a
+                facility of <b>Dynamic array or Resize-able Array</b> <em>i.e., An array which can grow and shrink its
+                    size at the time of addition or deletion of elements.</em>
+                <br />ArrayList is the part of Java Collection Framework. It is defined in <em>java.util package</em>
+                and implements List interface which provide functionalities to perform basic operation like store,
+                retrieve data from the list and etc.
+            </div>
+
+            <h3>Important point to remember about the ArrayList in Java</h3>
+
+            <ul>
+                <li>ArrayList is a Collection because ArrayList implements List interface and List interface extends
+                    Collection interface
+                <li>ArrayList add elements at the next available index.
+                <li>ArrayList can store one or more <b>null</b> values.
+                <li>ArrayList maintains insertion order.
+                <li>ArrayList allow to store duplicate objects.
+                <li>ArrayList is a Generic-based Class <em>i.e., we can set which type of elements going to stored into
+                        the List.</em> By default type of arraylist is Object.
+                <li>ArrayList store elements like an array, so we can access any elements randomly by using its index
+                    value.
+                <li>ArrayList is not synchronized among the threads, we have to make ArrayList synchronized externally.
+            </ul>
+
+            <br />
+
+            <h2 id="hierarchy-of-the-arraylist-in-java">Hierarchy of the ArrayList in java?</h2>
+
+            <img class='container'
+                src=https://1.bp.blogspot.com/-O_5iWlFsQcM/Xk44AQeqPcI/AAAAAAAAEdI/au5JHf4WTQcsLKLHyTMmoXp6V_J_hczOQCLcBGAsYHQ/s1600/ArrayList.jpeg">
+
+            <div>
+                <div class="outputBoxLabel">Declaration of ArrayList</div>
+                <pre class="syntaxBox"><code class="prettyprint">public class ArrayList&lt;E&gt;
+            extends AbstractList&lt;E&gt;
+            implements List&lt;E&gt;, Cloneable, java.io.Serializable {
+             ----------------
+        }</code>
+        </pre>
+            </div>
+
+            <h3>AbstractList&lt;E&gt;</h3>
+
+            <div>
+                The <i><b>AbstractList&lt;E&gt;</b></i> provides a basic and abstract implementation of the List
+                Interface to the ArrayList. Also, AbstractList&lt;E&gt; extends the AbstractCollection&lt;E&gt; which
+                provides the abstract implementation of the Collection Interface.
+            </div>
+
+            <div>
+                <h3>Why Cloneable?</h3>
+                <b>Cloneable</b> is a marker interface and it is a part of <em>java.lang</em> package. A class
+                implements this interface if it wants to call the
+                <b>clone() method of Object</b> class using super keyword <em><b>i.e., super.clone();</b></em> through
+                any method or any constructor. If that class does not implement this marker interface and invoke the
+                <em><b>i.e., super.clone();</b></em> then <em><b>java.lang.CloneNotSupportedException</b></em>will be
+                raised.
+                <br />ArrayList in Java, provides overrode clone() method that internally calls the actual clone()
+                method of Object class. So, ArrayList needs to implement this marker interface.
+            </div>
+
+            <div class="noteBox">
+                <b>Note : </b>The clone() method of Object class is used to create a cloned object.
+            </div>
+
+            <div>
+                <h3>Why Serializable?</h3>
+                <b>Serializable</b> is a marker interface and it is a part of <em>java.io</em> package. If Any class
+                implements this interface then the class can be serialized or deserialized. <b>Serialization</b> is a
+                process in which an object is converted into the byte stream and <b>Deserialization</b> is the reverse
+                of serialization i.e., byte stream to java object. Serialization helps us to store and retrieve objects
+                from and to files, databases, networks, etc. The only class marked with the Serializable interface can
+                be serialized or deserialized.
+                <br />ArrayList in Java often needs to store and retrieve the object from the files, databases, etc.
+                That's why ArrayList is implemented as Serializable.
+            </div>
+
+            <br />
+
+            <h2 id="how-to-create-objects-of-arraylist-in-java">How to create objects of ArrayList in Java?</h2>
+
+            <div>
+                Above we have learned what is ArrayList in Java and its hierarchy. Now, let's have a look at the
+                different ways to create objects of ArrayList.
+            </div>
+
+            <h3>Default Constructor : </h3>
+
+            <pre
+                class="codeBox"><code class="prettyprint">ArrayList&lt;String&gt; books = new ArrayList&lt;String&gt;();</code></pre>
+
+            <div>
+                Here, the ArrayList is instantiated using the default constructor and the type of ArrayList is declared
+                as the "String".
+            </div>
+
+            <h3>Using Constructor which require another Collection : </h3>
+
+            <div>
+                An ArrayList in Java can be created from another Collection and Collection can be a List, Set, etc.
+            </div>
+
+            <pre class="codeBox"><code class="prettyprint">ArrayList&lt;String&gt; books = new ArrayList&lt;String&gt;();
+        books.add("Programming In Java");
+        books.add("Learn ReactJs");
+        books.add("Introduction to Algorithms");
+        books.add("Data Structures");
+        ArrayList&lt;String&gt; copyBooks = new ArrayList&lt;String&gt;(books);
+        System.out.println(copyBooks);</code>
+        </pre>
+
+            <div>
+                <div class="outputBoxLabel">
+                    Output</div>
+                <pre
+                    class="outputBox">[Programming In Java, Learn ReactJs, Introduction to Algorithms, Data Structures]</pre>
+            </div>
+
+            <div>
+                Here, the ArrayList is instantiated using another Collection, that's why it is also known as Copy
+                constructor.
+            </div>
+
+            <br />
+
+            <h2 id="how-to-create-an-arraylist-of-custom-objects">How to create an ArrayList of Custom Objects?</h2>
+
+            <div>
+                To create an ArrayList of the Custom object, we first need to implement the structure of Custom Object.
+            </div>
+
+            <pre class="codeBox"><code class="prettyprint">class Book{
+             private String name;
+             private int price;
+        
+             public Book(String name, int price){
+                  this.name = name;
+                  this.price = price;
+             }
+        
+             public String getName() {
+                  return name;
+             }
+        
+             public void setName(String name) {
+                  this.name = name;
+             }
+        
+             public int getPrice() {
+                  return price;
+             }
+        
+             public void setPrice(int price) {
+                  this.price = price;
+             }
+        
+             @Override
+             public String toString(){  
+                  return "[ " + name + " : " + price + " ]";
+             }   
+        }</code>
+        </pre>
+
+            <div>
+                Here, a model of Book class is implemented to use further in the article. Now let's create a list of
+                books.
+            </div>
+
+            <pre class="codeBox"><code class="prettyprint">Book book1 = new Book("Programming In Java" , 450);
+        Book book2 = new Book("Learn ReactJs" , 350);
+        Book book3 = new Book("Introduction to Algorithms" , 600);
+        Book book4 = new Book("Data Structures" , 300);
+        
+        ArrayList&lt;Book&gt; books = new ArrayList&lt;Book&gt;();
+        books.add(book1);
+        books.add(book2);
+        books.add(book3);
+        books.add(book4);</code>
+        </pre>
+
+            <div>
+                Above created ArrayList <em>i.e., <b>"books"</b></em> is used further in the article for reference.
+            </div>
+
+            <br />
+
+            <h2 id="how-to-iterate-arraylist-in-java">How to iterate ArrayList in Java?</h2>
+
+            <div>
+                In java, there exists number of approaches to iterate ArrayList in Java. Let's look at a few of them
+                which come in day-to-day programming practices.
+            </div>
+
+            <br />
+
+            <h3>Using for-each loop</h3>
+
+            <h4>Java ArrayList Example 1: Iterate the ArrayList using for each loop and print all the books</h4>
+
+            <pre class="codeBox"><code class="prettyprint">for(Book book : books) {
+              System.out.println(book); 
+              /* 
+               * toString() method of Book class invoked internally 
+               * by println() method.
+               */
+        }</code>
+        </pre>
+
+            <div>
+                <div class="outputBoxLabel">Output</div>
+                <pre class="outputBox">[ Programming In Java : 450 ]
+        [ Learn ReactJs : 350 ]
+        [ Introduction to Algorithms : 600 ]
+        [ Data Structures : 300 ]
+        </pre>
+            </div>
+
+            <br />
+
+            <h3>Using Iterators</h3>
+
+            <h4>Java ArrayList Example 2: Iterate the ArrayList using iterators and print all the books</h4>
+
+            <pre class="codeBox"><code class="prettyprint">Iterator&lt;Book&gt; iterator = books.iterator();
+        while(iterator.hasNext()){
+              Book book = iterator.next();
+              System.out.println(book);
+        }</code>
+        </pre>
+
+            <div>
+                <div class="outputBoxLabel">Output</div>
+                <pre class="outputBox">[ Programming In Java : 450 ]
+        [ Learn ReactJs : 350 ]
+        [ Introduction to Algorithms : 600 ]
+        [ Data Structures : 300 ]
+        </pre>
+            </div>
+
+            <br />
+
+            <h3>Using forEach() method</h3>
+
+            <h4>Java ArrayList Example 3: Iterate the ArrayList using forEach() method and print all the books</h4>
+
+            <pre class="codeBox"><code class="prettyprint">books.forEach(book -> System.out.println(book));</code></pre>
+
+            <div>
+                <div class="outputBoxLabel">Output</div>
+                <pre class="outputBox">[ Programming In Java : 450 ]
+        [ Learn ReactJs : 350 ]
+        [ Introduction to Algorithms : 600 ]
+        [ Data Structures : 300 ]
+        </pre>
+            </div>
+
+            <br />
+
+            <h2 id="how-to-get-the-elements-by-index-from-arraylist-in-java">How to get the elements by index from
+                ArrayList in Java?</h2>
+
+            <div>
+                The <em>get()</em> method returns the element from the ArrayList at the specified index.
+            </div>
+
+            <div>
+                <div class="outputBoxLabel">Syntax</div>
+                <pre class="syntaxBox"><code class="prettyprint">E value = arrayList.get(index);
+        /*
+         * Here, 
+         * E : The type of data objects stored into the ArrayList in Java.
+         * index : index of the value in the ArrayList in Java
+         */</code>
+        </pre>
+            </div>
+
+            <div class="noteBox">
+                <b>Note : </b>The ArrayList in Java follows 0-Based Indexing i.e., 0<sup>th</sup> index value is refer
+                to 1st element of the ArrayList.
+            </div>
+
+            <br />
+
+            <h4>Java ArrayList Example 4: Get the 3rd book from the the <em>"books"</em> (ArrayList) using get() method
+            </h4>
+
+            <pre class="codeBox"><code class="prettyprint">Book book = books.get(2);
+        System.out.println(book);</code></pre>
+
+            <div>
+                <div class="outputBoxLabel">Output</div>
+                <pre class="outputBox">[ Introduction to Algorithms : 600 ]</pre>
+            </div>
+
+            <div class="noteBox">
+                <b>Note : </b>The index value must be less than the size of ArrayList in Java (i.e., the number of
+                elements stored in the ArrayList) otherwise <em><b>java.lang.IndexOutOfBoundsException</b></em> would be
+                raised.
+            </div>
+
+            <br />
+
+            <h4>Java ArrayList Example 5: Trying to use index beyond the size of ArrayList using get() method</h4>
+
+            <pre class="codeBox"><code class="prettyprint">Book book = books.get(6); // Exception Occured
+        System.out.println(book);</code></pre>
+
+            <div>
+                <div class="outputBoxLabel">Output</div>
+                <pre class="outputBox">
+        <span style="color: red;">Exception in thread "main" java.lang.IndexOutOfBoundsException: Index: 6, Size: 4
+              at java.util.ArrayList.rangeCheck(ArrayList.java:657)
+              at java.util.ArrayList.get(ArrayList.java:433)
+              at prac.code.ArrayListExample.main(ArrayListExample.java:172)</span>
+        </pre>
+            </div>
+
+            <br />
+
+            <h2 id="how-to-check-whether-an-elements-is-stored-in-the-arraylist-in-java">How to check whether an
+                elements is stored in the ArrayList in Java?</h2>
+
+            <div>
+                To check whether an elements is present into the ArrayList or not, ArrayList provides a method called
+                <em>contains()</em>. This method takes an argument and compare each element of the ArrayList with
+                <em>equals()</em> method and returns <b>true</b> if any time equals() method returns true.
+            </div>
+
+            <div>
+                <div class="outputBoxLabel">Syntax</div>
+                <pre class="syntaxBox"><code class="prettyprint">boolean result = arrayList.contains(object);
+        </code></pre>
+            </div>
+
+            <br />
+
+            <h4>Java ArrayList Example 6: To check whether a given book is present in the ArrayList or not (Attempt 1)
+            </h4>
+
+            <pre class="codeBox"><code class="prettyprint">Book book5 = new Book("Programming In Java" , 450); // Same as book1
+        if(books.contains(book5)) {
+               System.out.println(book5.getName() + " is present in the list");
+        } else {
+               System.out.println(book5.getName() + " is not present in the list");
+        }</code></pre>
+
+            <div>
+                <div class="outputBoxLabel">Output</div>
+                <pre class="outputBox">Programming In Java is not present in the list
+        </pre>
+            </div>
+
+            <div>
+                Yes, the output is saying the book is not present in the list because the <b>"book5"</b> is a new book
+                even though the name and price are same as <b>"book1"</b> but still it is considered as a new book to
+                the ArrayList. It is because the comparison is done by using the equals() method provided by the Object
+                class which compares two objects that are the same or not but doesn't compare the data of the objects.
+                <br />To make the comparison based on the data, we need to Override the functionality of the equals()
+                method in the Book class. Lets first override the equals() method in the Book class.
+            </div>
+
+            <pre class="codeBox"><code class="prettyprint">class Book{
+             /* ----------
+              * ----------
+              * field and other methods
+              * of the Book class
+              * ----------
+              */
+              
+              @Override
+              public boolean equals(Object obj) {
+                   Book book = (Book) obj;
+                   return name.equals(book.getName()) 
+                              && price == book.getPrice();
+              }
+        }</code></pre>
+
+            <br />
+
+            <h4>Java ArrayList Example 7: To check whether a given book is present in the ArrayList or not (Attempt 2)
+            </h4>
+
+            <pre class="codeBox"><code class="prettyprint">Book book5 = new Book("Programming In Java" , 450); // Same as book1
+        if(books.contains(book5)) {
+               System.out.println(book5.getName() + " is present in the list");
+        } else {
+               System.out.println(book5.getName() + " is not present in the list");
+        }</code></pre>
+
+            <div>
+                <div class="outputBoxLabel">Output</div>
+                <pre class="outputBox">Programming In Java is present in the list
+        </pre>
+            </div>
+
+            <br />
+
+            <h2 id="how-to-remove-elements-from-the-arraylist-in-java">How to remove elements from the ArrayList in
+                Java?</h2>
+
+
+            <br />
+
+            <h3>Using remove(index) method</h3>
+
+            <div>
+                The <em>remove(index)</em> method is used to remove element from the ArrayList on the basis of specified
+                index location. This method takes an index as an argument and remove that element from the ArrayList and
+                shift all the elements to the left side of the list by 1 position and return the removed element.
+            </div>
+
+            <h4>Java ArrayList Example 8: Remove the second book from the ArrayList</h4>
+
+            <pre class="codeBox"><code class="prettyprint">ArrayList&lt;Book&gt; newBookList = new ArrayList&lt;Book&gt;(books);
+        
+        System.out.println("-------ArrayList : Before removing second book--------");
+        newBookList.forEach(b -> System.out.println(b));
+        
+        Book book = newBookList.remove(1);
+        
+        System.out.println("-------ArrayList : After removing second book---------");
+        newBookList.forEach(b -> System.out.println(b));
+        
+        System.out.println("Removed Book : " + book);</code></pre>
+
+            <div>
+                <div class="outputBoxLabel">Output</div>
+                <pre class="outputBox">-------ArrayList : Before removing second book--------
+        [ Programming In Java : 450 ]
+        [ Learn ReactJs : 350 ]
+        [ Introduction to Algorithms : 600 ]
+        [ Data Structures : 300 ]
+        -------ArrayList : After removing second book---------
+        [ Programming In Java : 450 ]
+        [ Introduction to Algorithms : 600 ]
+        [ Data Structures : 300 ]
+        Removed Book : [ Learn ReactJs : 350 ]
+        </pre>
+            </div>
+
+            <div class="noteBox">
+                <b>Note : </b>Similar to get() method, the index value must be less than the size of ArrayList in Java
+                (i.e., the number of elements stored in the ArrayList) otherwise
+                <em><b>java.lang.IndexOutOfBoundsException</b></em> would be raised.
+            </div>
+
+            <br />
+
+            <h3>Using remove(object) method</h3>
+
+            <div>
+                The <em>remove(object)</em> method is used to remove the provided object (into the argument of remove()
+                method) from the ArrayList in Java. The provided element in the argument say <b>"object"</b> is compared
+                with each element of the ArrayList say <b>"obj"</b> by equals() method <em><b>i.e.,
+                        object.equals(obj)</b></em> and whenever it returns true then the object is removed from the
+                ArrayList.
+                <br />After the removing elements, all the remaining elements shift to the left to fill the empty space.
+            </div>
+
+            <h4>Java ArrayList Example 9: Remove the "Learn ReactJs" book from the ArrayList</h4>
+
+            <pre class="codeBox"><code class="prettyprint">ArrayList&lt;Book&gt; newBookList = new ArrayList&lt;Book&gt;(books);
+        
+        System.out.println("-------ArrayList : Before removing second book--------");
+        newBookList.forEach(b -> System.out.println(b));
+        
+        Book removeBook = new Book("Learn ReactJs" , 350);
+        boolean removed = newBookList.remove(removeBook);
+        
+        System.out.println("-------ArrayList : After removing second book---------");
+        newBookList.forEach(b -> System.out.println(b));
+        
+        if (removed) {
+              System.out.println("Removed Book : " + removeBook)
+        }</code>
+        </pre>
+
+            <div>
+                <div class="outputBoxLabel">Output</div>
+                <pre class="outputBox">-------ArrayList : Before removing second book--------
+        [ Programming In Java : 450 ]
+        [ Learn ReactJs : 350 ]
+        [ Introduction to Algorithms : 600 ]
+        [ Data Structures : 300 ]
+        -------ArrayList : After removing second book---------
+        [ Programming In Java : 450 ]
+        [ Introduction to Algorithms : 600 ]
+        [ Data Structures : 300 ]
+        Removed Book : [ Learn ReactJs : 350 ]
+        </pre>
+            </div>
+
+            <br />
+
+            <h3>Using removeIf() method</h3>
+
+            <div>
+                To remove object on the basis of some conditions we can use removeIf() method. The <em>removeIf()</em>
+                method takes an argument of <em>java.util.Predicate</em> type, apply that predicate to each element of
+                ArrayList and remove all those element which satisfies the given predicate.
+                <br />After the removing elements, all the remaining elements shift to the left to fill the empty space.
+            </div>
+
+            <h4>Java ArrayList Example 10: Remove the all the books from the ArrayList whose price is above 500</h4>
+
+            <pre class="codeBox"><code class="prettyprint">ArrayList&lt;Book&gt; newBookList = new ArrayList&lt;Book&gt;(books);
+        
+        System.out.println("-------ArrayList : Before--------");
+        newBookList.forEach(b -> System.out.println(b));
+        
+        newBookList.removeIf(b -> b.getPrice() > 500);
+        
+        System.out.println("-------ArrayList : After---------");
+        v.forEach(b -> System.out.println(b));</code></pre>
+
+            <div>
+                <div class="outputBoxLabel">Output</div>
+                <pre class="outputBox">-------ArrayList : Before--------
+        [ Programming In Java : 450 ]
+        [ Learn ReactJs : 350 ]
+        [ Introduction to Algorithms : 600 ]
+        [ Data Structures : 300 ]
+        -------ArrayList : After---------
+        [ Programming In Java : 450 ]
+        [ Learn ReactJs : 350 ]
+        [ Data Structures : 300 ]
+        </pre>
+            </div>
+
+            <div class="noteBox">
+                <b>Note : </b>The <b>"b -> b.getPrice() > 500"</b> is the lambda
+                representation of the Predicate class. Predicate is a Functional Interface which in introduced in Java
+                8.
+            </div>
+
+            <br />
+
+            <h2 id="few-more-methods-of-arraylist-in-java">Few more methods of ArrayList in Java?</h2>
+
+            <div>
+                <b>size()</b> : This method returns the size of ArrayList in Java <em>i.e., how many elements are stored
+                    in the ArrayList</em><br />
+                <b>clear()</b> : This method removes all elements from the ArrayList and make it empty.<br />
+                <b>isEmpty()</b> : This method returns true if the ArrayList is not containing any elements in it
+                otherwise false
+            </div>
+
+            <h4>Java ArrayList Example 11: Different States of ArrayList in Java</h4>
+
+            <pre class="codeBox"><code class="prettyprint">System.out.println("How many are there in the List? : " + books.size());
+        
+        System.out.println("Removing all elements from the ArrayList.....");
+        books.clear();
+        
+        if(books.isEmpty()) {
+               System.out.println("List is Empty Now");
+        }</code></pre>
+
+            <div>
+                <div class="outputBoxLabel">Output</div>
+                <pre class="outputBox">How many are there in the List? : 4
+        Removing all elements from the ArrayList.....
+        List is Empty Now
+        </pre>
+            </div>
+
+            <br />
+
+
+
+            <br />
+
+            <h2>Conclusion</h2>
+
+            <div>
+                In this article, we have learned what is ArrayList in Java, how we can create an instance of ArrayList
+                and the related methods of ArrayList. ArrayList in Java is a widely used class, due to its capability of
+                resizing its array size.
+            </div>
+
+        </div>
+    </div>

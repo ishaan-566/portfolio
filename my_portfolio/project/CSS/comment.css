@@ -1,0 +1,34 @@
+#project,
+#comments {
+    background-color: white;
+    padding: 25px;
+    border-radius: 1rem;
+    box-shadow: 0 13px 8px -10px rgb(0 0 0 / 10%);
+    margin: 20px 0px;
+}
+
+.comment {
+    display: flex;
+}
+
+.comment-body,
+.comment-form {
+    margin-left: 15px;
+    width: 80%;
+}
+
+.user {
+    width: 75px;
+    height: 75px;
+    margin: auto;
+    text-align: -webkit-center;
+    padding: 15px !important;
+    color: white;
+    background-color: #e8442d;
+}
+
+.comment-form input {
+    border-radius: 0.5rem;
+    margin-bottom: 1px;
+    width: 100%;
+}

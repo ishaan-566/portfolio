@@ -1439,7 +1439,7 @@ body {
 
 a {
   color: #2b90d9;
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 a:hover, a:focus {
