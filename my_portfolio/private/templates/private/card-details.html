@@ -58,8 +58,10 @@
         <div class="row">
             <div class="col-md-7">
                 <div class="card-holder">
-                    <img src="https://drive.google.com/uc?export=view&id={{card.front}}" id="front">
-                    <img src="https://drive.google.com/uc?export=view&id={{card.back}}" id="back">
+                    <iframe src="https://drive.google.com/file/d/{{card.front}}/preview" allow="autoplay" id="front"></iframe>
+                    <iframe src="https://drive.google.com/file/d/{{card.back}}/preview" allow="autoplay" id="back"></iframe>
+                    <!-- <img src="https://drive.google.com/uc?export=view&id={{card.front}}" id="front">
+                    <img src="https://drive.google.com/uc?export=view&id={{card.back}}" id="back"> -->
                 </div>
                 <br><br>
             </div>

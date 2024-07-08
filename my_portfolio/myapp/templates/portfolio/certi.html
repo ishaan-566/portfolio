@@ -93,11 +93,9 @@
         {% for cl in certificates %}
             <div class="row">
                 {% for c in cl %}
-                <div class="col-md-3" style="align-self:center">
+                <div class="col-md-3" style="align-self:center" onclick='modalFunction("{{ c.image }}", "{{ c.title|upper }}")'>
                     <h6 style="text-decoration:underline;">{{ c.title|upper }}</h6>
-                    <img id="myImg" src="https://drive.google.com/uc?export=view&id={{ c.image }}" alt="{{ c.title|upper }}"
-                    onclick='modalFunction("{{ c.image }}", "{{ c.title|upper }}")'
-                    style="width:100%">
+                    <iframe id="myImg" src="https://drive.google.com/file/d/{{ c.image }}/preview" style="width:100%" allow="autoplay" alt="{{ c.title|upper }}"></iframe>
                 </div>
                 {% endfor %}
             </div>
@@ -105,7 +103,7 @@
         {% endfor %}
         <div id="myModal" class="modal">
             <span class="close" onclick="close()">&times;</span>
-            <img src="" class="modal-content mt-2" id="img01">
+            <iframe src="" allow="autoplay" class="modal-content mt-2" id="img01"></iframe>
             <div id="caption"></div>
         </div>
     </div>
@@ -120,7 +118,7 @@
         var modalImg = document.getElementById("img01");
         var captionText = document.getElementById("caption");
         modal.style.display = "block";
-        modalImg.src = "https://drive.google.com/uc?export=view&id="+image;
+        modalImg.src = "https://drive.google.com/file/d/"+image+"/preview";
         captionText.innerHTML = caption;
     }
     var span = document.getElementsByClassName("close")[0];
